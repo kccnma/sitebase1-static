@@ -107,6 +107,10 @@ p {
   max-width: 38em;
 }
 
+strong {
+  font-weight: 700;
+}
+
 /* #LINKS */
 a {
   color: #036;
@@ -785,9 +789,20 @@ article p + h6 {
 }
 
 /* Swap the display order of two columns */
+.orderswap {
+  flex-direction: row-reverse;
+}
+
+/* OLD/LEGACY SUPPORT FOR PRE-FLEXBOX ORDERSWAP */
 .orderswap .one-half.column:first-child {
   float: right;
   margin-right: 0;
+}
+
+/* OLD VERTICAL CENTERING MARKUP PRE-FLEXBOX */
+.vert-parent .column {
+  display: flex;
+  align-items: center;
 }
 
 /* Thumb Lists */
@@ -804,6 +819,10 @@ ul.thumblist li img {
   float: left;
 }
 
+ul.thumblist li p {
+  max-width: none;
+}
+
 ul.thumblist li + li {
   border-top: 1px solid #ddd;
 }
@@ -818,6 +837,7 @@ ul.thumblist li + li {
 
 ul.thumblist-grid {
   margin: 2em 0;
+  /* TEMP FIX FOR NOW, NEED TO GET RID OF FLOAT AND USE FLEXBOX OR GRID!! */
 }
 
 ul.thumblist-grid li {
@@ -842,7 +862,6 @@ ul.thumblist-grid li a img {
 
 ul.thumblist-grid li a img:hover {
   border: 3px solid #39c;
-  margin: -3px;
 }
 
 ul.thumblist-grid li h5,
@@ -864,6 +883,12 @@ ul.thumblist-grid li:nth-child(even) {
   ul.thumblist-grid li:nth-child(4n) {
     margin-right: 0;
   }
+}
+
+ul.thumblist-grid:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* #SITE NAVIGATION  */
